@@ -1,0 +1,55 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{%static 'update_app.css'%}" rel="stylesheet">
+    <title>Swae_Ref</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Swae_Ref</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarColor03">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link active" href="#">Home
+                  <span class="visually-hidden">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+              </li>
+            </ul>
+            
+          </div>
+        </div>
+      </nav>
+    
+    {% for post in posts reversed%}
+    <div class="card mb-3">
+        <h3 class="card-header">{{post.title}}</h3>
+        <div class="card-body">
+        </div>
+        <center><img src="{{post.image.url}}" class="d-block user-select-none" width="70%" height="70%" aria-label="Placeholder: Image cap" focusable="false" role="img" preserveAspectRatio="xMidYMid slice" viewBox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle"></center>
+        </svg>
+        <div class="card-body">
+          <p class="card-text">{{post.body|truncatewords:25}}</p>
+        </div>
+        <div class="card-footer text-muted">
+          2 days ago
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <a href="/posts/{{post.pk}}">Read More...</a>
+        </div>
+      </div>
+    {%endfor%}
+</body>
+</html>
